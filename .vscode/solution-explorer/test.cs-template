@@ -1,0 +1,28 @@
+using System;
+
+using FluentAssertions;
+
+using NUnit.Framework;
+
+namespace {{namespace}}
+{
+    [TestFixture]
+    public class {{name}}
+    {
+        [Test]
+        public void Test_Addition_With_Valid_Intigers()
+        {
+            // Arrange
+            // Act
+            int result = 3 + 5;
+
+            // Assert
+
+            // ### Default NUnit: ###
+            Assert.AreEqual(8, result);
+
+            // ### Same with FluentAssertions: ###
+            result.Should().Be(8);
+        }
+    }
+}

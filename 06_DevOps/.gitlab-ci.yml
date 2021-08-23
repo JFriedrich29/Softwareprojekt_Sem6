@@ -1,0 +1,22 @@
+stages:
+    - Build&Test
+
+build-job:
+    stage: Build&Test
+    tags:
+        - Win-CI-Server
+    script:
+        # Build and test projects with Cake
+        - $BUILD_MODE = "BASIC"
+        - if ($CI_COMMIT_REF_NAME -eq "master" -or "$CI_COMMIT_REF_NAME" -eq "develop") { $BUILD_MODE = "FULL"}
+        - powershell -File .\06_DevOps\build.ps1 -target $BUILD_MODE
+    artifacts:
+        reports:
+            # Collect test results, so GitLab can display them
+            junit: .\06_DevOps\artifacts\test-results\*.Tests_Results.xml
+        paths:
+            # Collect doxygen documentation and publish them to GitLab pages
+            - .\06_DevOps\artifacts\code-documentation\html
+            # Collect zipped application
+            - .\06_DevOps\artifacts\QuantumCryptoCram_Application.zip
+        expire_in: 30 days

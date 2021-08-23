@@ -1,0 +1,158 @@
+<UserControl x:Class="QuantumCryptoCram.Presentation.Views.EncryptionTest.EveEncryptionTestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:QuantumCryptoCram.Presentation.Controls"
+             xmlns:converters="clr-namespace:QuantumCryptoCram.Presentation.Converters"
+             xmlns:designTime="clr-namespace:QuantumCryptoCram.Presentation.DesignTime"
+             xmlns:s="https://github.com/canton7/Stylet"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.FontWeight="Medium"
+             TextElement.FontSize="14"
+             FontFamily="{materialDesign:MaterialDesignFont}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <converters:MeasuredDataKeyRelevanceTypeToColorConverter x:Key="measuredDataKeyRelevanceTypeToColorConverter" />
+        <converters:BoolToStringConverter x:Key="boolToStringConverter" />
+        <designTime:EveEncryptionDesignTimeVM x:Key="EncryptionDesignTimeVM" />
+
+        <Style x:Key="CustomErrorControlOnErrorStyle"
+               TargetType="TextBox">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <StackPanel>
+                            <AdornedElementPlaceholder x:Name="placeholder" />
+                            <TextBlock FontSize="11"
+                                       FontStyle="Italic"
+                                       Foreground="Red"
+                                       Text="{Binding ElementName=placeholder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" />
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*" />
+            <ColumnDefinition Width="0.25*" />
+            <ColumnDefinition Width="0.25*" />
+            <ColumnDefinition Width="0.25*" />
+        </Grid.ColumnDefinitions>
+
+        <controls:TopBarView BackButtonCommand="{Binding BackCommand}" />
+
+        <controls:TopBarView Title="Nachricht entschlüsseln (Eve)"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="4"
+                             Grid.Row="0"
+                             BackButtonCommand="{Binding BackCommand}"
+                             HelpButtonCommand="{Binding HelpCommand}" />
+
+        <GroupBox Header="Generierung"
+                  Grid.Row="1"
+                  Grid.Column="0">
+            <StackPanel Orientation="Vertical">
+                <Button Content="Unbekannte Keybits mit zufälligen Daten füllen"
+                        Command="{s:Action FillWithRandomBitsCommand}" />
+
+                <Button Content="Zurücksetzen"
+                        Command="{s:Action ResetCommand}"
+                        Margin="0, 10" />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="FinalKey Editierung"
+                  Grid.Row="1"
+                  Grid.Column="1">
+            <DataGrid Name="MyGrid"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      AutoGenerateColumns="False"
+                      ItemsSource="{Binding Path=FinalKeyBitsWithRelevance}"
+                      d:DataContext="{StaticResource EncryptionDesignTimeVM}"
+                      CanUserSortColumns="False"
+                      CanUserAddRows="False"
+                      CanUserResizeColumns="False"
+                      CanUserDeleteRows="False"
+                      CellEditEnding="{s:Action CellEditedCommand}"
+                      PreviewKeyDown="MyGrid_PreviewKeyDown">
+                <DataGrid.Columns>
+                    <!--DataBits that Eve measured-->
+                    <DataGridTextColumn Header="Gemessen"
+                                        IsReadOnly="True"
+                                        Binding="{Binding DataBit, Converter={StaticResource boolToStringConverter}}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="Background"
+                                        Value="{Binding RelevanceType, Converter={StaticResource measuredDataKeyRelevanceTypeToColorConverter}}" />
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <!--Key that Eve can edit-->
+                    <DataGridTextColumn Header="Key"
+                                        Binding="{Binding FinalKeyBit, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource boolToStringConverter}}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+        <GroupBox Header="Entschlüsselung"
+                  Grid.Row="1"
+                  Grid.Column="2"
+                  VerticalAlignment="Top"
+                  >
+            <DataGrid HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      AutoGenerateColumns="False"
+                      ItemsSource="{Binding Path=MyEncryptionTestNotebook}"
+                      CanUserSortColumns="False"
+                      CanUserAddRows="False"
+                      CanUserResizeColumns="False"
+                      CanUserDeleteRows="False"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Cipher"
+                                        Binding="{Binding CipherBit, Converter={StaticResource boolToStringConverter}}" />
+
+                    <DataGridTextColumn Header="Final Key Eve"
+                                        Binding="{Binding KeyBit, Converter={StaticResource boolToStringConverter}}" />
+
+                    <DataGridTextColumn Header="Nachricht (Bits)"
+                                        Binding="{Binding MessageBit, Converter={StaticResource boolToStringConverter}}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+        <GroupBox Header="Nachricht"
+                  Grid.Column="3"
+                  Grid.Row="1"
+                  VerticalAlignment="Top">
+            <TextBox Text="{Binding PlainText}"
+                     materialDesign:HintAssist.Hint="Entschlüsselte Nachricht"
+                     TextWrapping="Wrap"
+                     Height="100"
+                     IsReadOnly="True" />
+        </GroupBox>
+
+        <Rectangle Fill="Blue"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   Grid.Row="2"
+                   Height="20"
+                   Margin="16, 0, 16, 16" />
+    </Grid>
+</UserControl>

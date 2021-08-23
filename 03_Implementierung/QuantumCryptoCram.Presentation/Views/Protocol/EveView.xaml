@@ -1,0 +1,206 @@
+<UserControl x:Class="QuantumCryptoCram.Presentation.Views.Protocol.EveView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:domainQuantum="clr-namespace:QuantumCryptoCram.Domain.Quantum;assembly=QuantumCryptoCram.Domain"
+             xmlns:domainProtocol="clr-namespace:QuantumCryptoCram.Domain.Protocol;assembly=QuantumCryptoCram.Domain"
+             xmlns:controls="clr-namespace:QuantumCryptoCram.Presentation.Controls"
+             xmlns:conv="clr-namespace:QuantumCryptoCram.Presentation.Converters"
+             xmlns:s="https://github.com/canton7/Stylet"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.FontWeight="Medium"
+             TextElement.FontSize="14"
+             FontFamily="{materialDesign:MaterialDesignFont}"
+             mc:Ignorable="d"
+             x:Name="Eve">
+
+    <UserControl.Resources>
+        <conv:MeasuredDataKeyRelevanceTypeToColorConverter x:Key="measuredDataKeyRelevanceTypeToColorConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <controls:TopBarView Title="Eve"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="3"
+                             Grid.Row="0"
+                             BackButtonCommand="{Binding BackCommand}"
+                             HelpButtonCommand="{Binding HelpCommand}" />
+
+        <TextBox Background="Blue"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="3"
+                 Grid.Row="1"
+                 Margin="16, 16, 16, 0">
+            <TextBox.Style>
+                <Style TargetType="TextBox"
+                       BasedOn="{StaticResource ChannelStyle}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding PublicChannelUpdateTrigger}"
+                                     Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource FlickerAnimation}" />
+                            </DataTrigger.EnterActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <GroupBox Header="Tabelle"
+                  Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3">
+            <DataGrid ItemsSource="{Binding ProtocolNotebook}"
+                      AutoGenerateColumns="False"
+                      CanUserSortColumns="False"
+                      CanUserAddRows="False"
+                      CanUserResizeColumns="False"
+                      CanUserDeleteRows="False"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Binding="{Binding InternalNotebookEntry.PolarisationAlice}">
+                        <DataGridTextColumn.Header>
+                            <StackPanel>
+                                <Label>Polarisation Alice</Label>
+                                <Button Command="{s:Action CopyPolarisationsFromRole}"
+                                        CommandParameter="{x:Static domainProtocol:ProtocolRoleType.Alice}">Übernehmen</Button>
+                            </StackPanel>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Binding="{Binding InternalNotebookEntry.PolarisationBob}">
+                        <DataGridTextColumn.Header>
+                            <StackPanel>
+                                <Label>Polarisation Bob</Label>
+                                <Button Command="{s:Action CopyPolarisationsFromRole}"
+                                        CommandParameter="{x:Static domainProtocol:ProtocolRoleType.Bob}">Übernehmen</Button>
+                            </StackPanel>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Polarisation Eve"
+                                        Binding="{Binding InternalNotebookEntry.MyPolarisation}" />
+
+                    <DataGridTextColumn Header="Gemessene Datenbits"
+                                        Binding="{Binding InternalNotebookEntry.MyData}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell"
+                                   BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                                <Setter Property="Background"
+                                        Value="{Binding InternalNotebookEntry.RelevanceType, Converter={StaticResource measuredDataKeyRelevanceTypeToColorConverter}}" />
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+        <TextBox Background="Red"
+                 Grid.Column="0"
+                 Grid.Row="3"
+                 Margin="16 23 0 0"
+                 IsEnabled="{Binding IsProtocolInProgress}"
+                 Text="{Binding PendingPhotonsCount}">
+            <TextBox.Style>
+                <Style TargetType="TextBox"
+                       BasedOn="{StaticResource ChannelStyle}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding QuantumChannelUpdateTrigger}"
+                                     Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource FlickerAnimation}" />
+                            </DataTrigger.EnterActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <GroupBox Header="Polarisationen erzeugen"
+                  Grid.Row="3"
+                  Grid.Column="1"
+                  IsEnabled="{Binding IsProtocolInProgress}">
+            <StackPanel Orientation="Vertical">
+                <Button Content="x"
+                        Margin="0, 5"
+                        Command="{s:Action NoteDownPolarisationCommand}"
+                        CommandParameter="{x:Static domainQuantum:Polarisation.Diagonal}" />
+
+                <Button Content="+"
+                        Margin="0, 5"
+                        Command="{s:Action NoteDownPolarisationCommand}"
+                        CommandParameter="{x:Static domainQuantum:Polarisation.Rectilinear}" />
+
+                <Grid Margin="0,15,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Text="{Binding AmountRandomPolarisations}"
+                             materialDesign:HintAssist.Hint="Anzahl"
+                             Grid.Column="0"
+                             VerticalAlignment="Center" />
+
+                    <Button Command="{s:Action NoteDownRandomPolarisationsCommand}"
+                            Margin="10"
+                            Height="Auto"
+                            Grid.Column="1">
+                        <TextBlock TextWrapping="Wrap"
+                                   TextAlignment="Center">Zufällige Polarisationen übernehmen</TextBlock>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Interaktionsübersicht"
+                  Grid.Row="3"
+                  Grid.Column="2"
+                  IsEnabled="{Binding IsProtocolInProgress}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="0.5*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox Background="Red"
+                         Grid.Column="0"
+                         Margin="0, 10, 10, 10">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox"
+                               BasedOn="{StaticResource ChannelStyle}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding QuantumChannelUpdateTrigger}"
+                                             Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource FlickerAnimation}" />
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+                <Button Content="Messen fertig"
+                        Command="{s:Action MeasurementCompletedCommand}"
+                        Grid.Column="1" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

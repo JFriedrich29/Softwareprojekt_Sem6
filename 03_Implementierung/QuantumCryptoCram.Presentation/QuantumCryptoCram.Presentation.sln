@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumCryptoCram.Presentation", "QuantumCryptoCram.Presentation.csproj", "{D791EE71-8E4D-4E14-8494-594C776E2751}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D791EE71-8E4D-4E14-8494-594C776E2751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D791EE71-8E4D-4E14-8494-594C776E2751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D791EE71-8E4D-4E14-8494-594C776E2751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D791EE71-8E4D-4E14-8494-594C776E2751}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60612F4E-002C-4E9F-A903-AFC251659430}
+	EndGlobalSection
+EndGlobal

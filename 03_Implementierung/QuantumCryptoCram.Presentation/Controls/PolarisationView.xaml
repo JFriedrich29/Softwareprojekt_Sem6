@@ -1,0 +1,19 @@
+<UserControl x:Class="QuantumCryptoCram.Presentation.Controls.PolarisationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:Name="host">
+    <materialDesign:PackIcon x:Name="PolarisationIcon"
+                             Visibility="Hidden"
+                             Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
+                             Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight}" />
+    <!--Width="{Binding ActualWidth, ElementName=host}"
+                             Height="{Binding ActualHeight, ElementName=host}"-->
+</UserControl>
+<!--Width="{Binding Width, ElementName=host}"
+                             Height="{Binding Height, ElementName=host}"--> 

@@ -1,0 +1,27 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // VSCode task for compiling and building this project on Windows and Linux.
+            // To execute it enter "Run build task" in the command pallet.
+            "label": "Compile and Tests",
+            "type": "shell",
+            "windows": {
+                "command": "./../06_DevOps/build.ps1"
+            },
+            "linux": {
+                "command": "./../06_DevOps/build.sh"
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": [
+                "$cake"
+            ]
+        }
+    ]
+}

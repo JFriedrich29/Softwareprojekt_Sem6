@@ -1,0 +1,116 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumCryptoCram.Application", "03_Implementierung\QuantumCryptoCram.Application\QuantumCryptoCram.Application.csproj", "{6B172EDF-C603-4BD6-B282-E5D3FD375985}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumCryptoCram.Common", "03_Implementierung\QuantumCryptoCram.Common\QuantumCryptoCram.Common.csproj", "{DB696C3D-AB12-4932-AAC0-795E429C85ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumCryptoCram.Infrastructure", "03_Implementierung\QuantumCryptoCram.Infrastructure\QuantumCryptoCram.Infrastructure.csproj", "{74C7F01B-27DA-4D7D-99BD-4A78DAC72CA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumCryptoCram.Presentation", "03_Implementierung\QuantumCryptoCram.Presentation\QuantumCryptoCram.Presentation.csproj", "{D791EE71-8E4D-4E14-8494-594C776E2751}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_Presentation", "1_Presentation", "{FB1038E1-53E7-4804-84E6-42D0A882BDFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2_Application", "2_Application", "{E311A73F-207F-4210-ABAF-047ED13036A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_Domain", "3_Domain", "{622C6434-F906-4977-BA81-AEE22044BB62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4_Infrastructure", "4_Infrastructure", "{162DB997-E5F3-4BEA-A0BB-B2385BE56FE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5_Common", "5_Common", "{CA280CB2-8F36-4D63-87CB-75E4461E2BC6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumCryptoCram.Domain", "03_Implementierung\QuantumCryptoCram.Domain\QuantumCryptoCram.Domain.csproj", "{412F8D90-5AAB-41C4-B8EC-054229B7BBF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C10AA55D-4A50-407F-ACE6-2AF92F40BE69}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumCryptoCram.Application.Tests", "04_Test\QuantumCryptoCram.Application.Tests\QuantumCryptoCram.Application.Tests.csproj", "{48EF326A-9452-40EB-B7DF-83840714D87E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumCryptoCram.Infrastructure.Tests", "04_Test\QuantumCryptoCram.Infrastructure.Tests\QuantumCryptoCram.Infrastructure.Tests.csproj", "{2F56921F-31C5-4B01-8070-EC5716D0B84D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumCryptoCram.Common.Tests", "04_Test\QuantumCryptoCram.Common.Tests\QuantumCryptoCram.Common.Tests.csproj", "{7838E970-F64A-4B28-8BB4-81763F318422}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumCryptoCram.Presentation.Tests", "04_Test\QuantumCryptoCram.Presentation.Tests\QuantumCryptoCram.Presentation.Tests.csproj", "{2700BA41-7D13-4C9B-88F6-FF003C6DC7E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Publish|Any CPU = Publish|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B172EDF-C603-4BD6-B282-E5D3FD375985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B172EDF-C603-4BD6-B282-E5D3FD375985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B172EDF-C603-4BD6-B282-E5D3FD375985}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{6B172EDF-C603-4BD6-B282-E5D3FD375985}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{6B172EDF-C603-4BD6-B282-E5D3FD375985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B172EDF-C603-4BD6-B282-E5D3FD375985}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB696C3D-AB12-4932-AAC0-795E429C85ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB696C3D-AB12-4932-AAC0-795E429C85ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB696C3D-AB12-4932-AAC0-795E429C85ED}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{DB696C3D-AB12-4932-AAC0-795E429C85ED}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{DB696C3D-AB12-4932-AAC0-795E429C85ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB696C3D-AB12-4932-AAC0-795E429C85ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74C7F01B-27DA-4D7D-99BD-4A78DAC72CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C7F01B-27DA-4D7D-99BD-4A78DAC72CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C7F01B-27DA-4D7D-99BD-4A78DAC72CA4}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{74C7F01B-27DA-4D7D-99BD-4A78DAC72CA4}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{74C7F01B-27DA-4D7D-99BD-4A78DAC72CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C7F01B-27DA-4D7D-99BD-4A78DAC72CA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D791EE71-8E4D-4E14-8494-594C776E2751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D791EE71-8E4D-4E14-8494-594C776E2751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D791EE71-8E4D-4E14-8494-594C776E2751}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{D791EE71-8E4D-4E14-8494-594C776E2751}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{D791EE71-8E4D-4E14-8494-594C776E2751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D791EE71-8E4D-4E14-8494-594C776E2751}.Release|Any CPU.Build.0 = Release|Any CPU
+		{412F8D90-5AAB-41C4-B8EC-054229B7BBF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{412F8D90-5AAB-41C4-B8EC-054229B7BBF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{412F8D90-5AAB-41C4-B8EC-054229B7BBF3}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{412F8D90-5AAB-41C4-B8EC-054229B7BBF3}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{412F8D90-5AAB-41C4-B8EC-054229B7BBF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{412F8D90-5AAB-41C4-B8EC-054229B7BBF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48EF326A-9452-40EB-B7DF-83840714D87E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48EF326A-9452-40EB-B7DF-83840714D87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48EF326A-9452-40EB-B7DF-83840714D87E}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{48EF326A-9452-40EB-B7DF-83840714D87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48EF326A-9452-40EB-B7DF-83840714D87E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F56921F-31C5-4B01-8070-EC5716D0B84D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F56921F-31C5-4B01-8070-EC5716D0B84D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F56921F-31C5-4B01-8070-EC5716D0B84D}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{2F56921F-31C5-4B01-8070-EC5716D0B84D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F56921F-31C5-4B01-8070-EC5716D0B84D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7838E970-F64A-4B28-8BB4-81763F318422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7838E970-F64A-4B28-8BB4-81763F318422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7838E970-F64A-4B28-8BB4-81763F318422}.Publish|Any CPU.ActiveCfg = Release|Any CPU
+		{7838E970-F64A-4B28-8BB4-81763F318422}.Publish|Any CPU.Build.0 = Release|Any CPU
+		{7838E970-F64A-4B28-8BB4-81763F318422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7838E970-F64A-4B28-8BB4-81763F318422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2700BA41-7D13-4C9B-88F6-FF003C6DC7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2700BA41-7D13-4C9B-88F6-FF003C6DC7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2700BA41-7D13-4C9B-88F6-FF003C6DC7E3}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
+		{2700BA41-7D13-4C9B-88F6-FF003C6DC7E3}.Publish|Any CPU.Build.0 = Debug|Any CPU
+		{2700BA41-7D13-4C9B-88F6-FF003C6DC7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2700BA41-7D13-4C9B-88F6-FF003C6DC7E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B172EDF-C603-4BD6-B282-E5D3FD375985} = {E311A73F-207F-4210-ABAF-047ED13036A3}
+		{DB696C3D-AB12-4932-AAC0-795E429C85ED} = {CA280CB2-8F36-4D63-87CB-75E4461E2BC6}
+		{74C7F01B-27DA-4D7D-99BD-4A78DAC72CA4} = {162DB997-E5F3-4BEA-A0BB-B2385BE56FE9}
+		{D791EE71-8E4D-4E14-8494-594C776E2751} = {FB1038E1-53E7-4804-84E6-42D0A882BDFF}
+		{412F8D90-5AAB-41C4-B8EC-054229B7BBF3} = {622C6434-F906-4977-BA81-AEE22044BB62}
+		{48EF326A-9452-40EB-B7DF-83840714D87E} = {E311A73F-207F-4210-ABAF-047ED13036A3}
+		{2F56921F-31C5-4B01-8070-EC5716D0B84D} = {162DB997-E5F3-4BEA-A0BB-B2385BE56FE9}
+		{7838E970-F64A-4B28-8BB4-81763F318422} = {CA280CB2-8F36-4D63-87CB-75E4461E2BC6}
+		{2700BA41-7D13-4C9B-88F6-FF003C6DC7E3} = {FB1038E1-53E7-4804-84E6-42D0A882BDFF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1776164E-2E71-4010-A412-27709655A96A}
+	EndGlobalSection
+EndGlobal

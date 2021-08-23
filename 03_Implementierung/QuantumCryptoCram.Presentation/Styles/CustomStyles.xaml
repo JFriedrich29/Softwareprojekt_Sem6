@@ -1,0 +1,75 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DropShadowEffect x:Key="DropShadow"
+                      Direction="270"
+                      BlurRadius="15"
+                      Color="Black"
+                      Opacity="0.20" />
+    <Storyboard x:Key="FlickerAnimation">
+        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                         From="0.1"
+                         To="1"
+                         RepeatBehavior="1x"
+                         AutoReverse="False"
+                         Duration="0:0:0.2" />
+    </Storyboard>
+
+    <!--Apply Material Design Styles globally-->
+    <Style TargetType="{x:Type Button}"
+           BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+        <Setter Property="OverridesDefaultStyle"
+                Value="true" />
+        <Setter Property="materialDesign:ShadowAssist.ShadowDepth"
+                Value="Depth1" />
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}"
+           BasedOn="{StaticResource MaterialDesignOutlinedTextBox}">
+        <Setter Property="OverridesDefaultStyle"
+                Value="true" />
+        <Setter Property="materialDesign:HintAssist.Hint"
+                Value="Eingeben..." />
+    </Style>
+
+    <Style TargetType="{x:Type GroupBox}"
+           BasedOn="{StaticResource MaterialDesignGroupBox}">
+        <Setter Property="OverridesDefaultStyle"
+                Value="true" />
+        <Setter Property="Margin"
+                Value="16" />
+        <Setter Property="materialDesign:ShadowAssist.ShadowDepth"
+                Value="Depth0" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+    </Style>
+
+    <Style TargetType="TextBox"
+           BasedOn="{StaticResource {x:Type TextBox}}"
+           x:Key="ChannelStyle">
+        <Setter Property="Effect"
+                Value="{StaticResource DropShadow}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10"
+                            Margin="0 5"
+                            Padding="5"
+                            BorderThickness="1"
+                            Background="{TemplateBinding Background}"
+                            Height="25"
+                            MinWidth="50">
+                        <TextBlock FontSize="10"
+                                   Foreground="White"
+                                   TextAlignment="Center"
+                                   Text="{TemplateBinding Text}">
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Separator}"
+           BasedOn="{StaticResource MaterialDesignSeparator}"></Style>
+</ResourceDictionary>
