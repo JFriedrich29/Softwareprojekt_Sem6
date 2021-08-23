@@ -1,5 +1,5 @@
 # IMPORTANT NOTE
-8372 ist my alias on the gitlab server of my universtity so odnt be confused that the original commiter doesnt match
+8372 ist my alias on the gitlab server of my universtity so don't be confused that the original commiter doesn't match
 
 
 # QuantumCryptoCram
