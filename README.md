@@ -1,3 +1,7 @@
+# IMPORTANT NOTE
+8372 ist my alias on the gitlab server of my universtity so odnt be confused that the original commiter doesnt match
+
+
 # QuantumCryptoCram
 
 "QuantumCryptoCram" ist eine Lernsoftware zur Quantenkryptographie, um den Nutzer das BB-84-Protokoll näher zu bringen.
